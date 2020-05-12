@@ -9,7 +9,6 @@
 		<maven.compiler.target>1.8</maven.compiler.target>	
 		<maven.compiler.source>1.8</maven.compiler.source>	
 	</properties>	
-	​	
 	<parent>	
 		<groupId>org.springframework.boot</groupId>	
 		<artifactId>spring-boot-starter-parent</artifactId>	
