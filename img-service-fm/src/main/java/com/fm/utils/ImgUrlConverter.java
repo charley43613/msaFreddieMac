@@ -14,15 +14,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class ImgUrlConverter {
 	
-	public static String getBase64EncodedImage(String imageURL) throws IOException, MalformedURLException{
+	public static InputStream getInputStreamOfImage(String imageURL) throws IOException, MalformedURLException{
 	    try {
-	    	
+	    	for(int i = 0; i<10; i++) {
+	    		System.out.println(imageURL);
+	    	}
 			URLConnection url = new java.net.URL(imageURL).openConnection(); 
 		    url.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
 
 		    InputStream is = url.getInputStream();  
-		    byte[] bytes = org.apache.commons.io.IOUtils.toByteArray(is); 
-		    return Base64.encodeBase64String(bytes);
+		    return is;
+//		    byte[] bytes = org.apache.commons.io.IOUtils.toByteArray(is); 
+//		    return Base64.encodeBase64String(bytes);
 	    	
 	    }
 	    catch(MalformedURLException e) {
