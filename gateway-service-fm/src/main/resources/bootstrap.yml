@@ -1,3 +1,5 @@
 spring:
   application:
     name: gateway-service-fm
+ribbon:
+  ReadTimeout: 60000

@@ -24,15 +24,9 @@ public class ImgUrlConverter {
 
 		    InputStream is = url.getInputStream();  
 		    return is;
-//		    byte[] bytes = org.apache.commons.io.IOUtils.toByteArray(is); 
-//		    return Base64.encodeBase64String(bytes);
 	    	
 	    }
 	    catch(MalformedURLException e) {
-	    	for(int i =0; i<10; i++) {
-	    		System.out.println("WHAT THE FACK");
-	    	}
-	    	
 	    	e.printStackTrace();
 	    	return null;
 	    }
