@@ -4,3 +4,8 @@ server:
 spring:
   application:
     name: img-service-fm
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://disc-host:8761/eureka/

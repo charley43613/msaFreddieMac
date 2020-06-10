@@ -32,8 +32,8 @@ import com.fm.utils.ImgUrlConverter;
 
 
 
-
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
+		
+@CrossOrigin(origins = {"*"}, allowedHeaders = "*", allowCredentials = "true")
 @RestController
 @RequestMapping("/awsImg")
 public class ImgCompareController {

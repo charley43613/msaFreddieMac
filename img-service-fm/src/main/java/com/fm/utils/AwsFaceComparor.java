@@ -34,7 +34,7 @@ public class AwsFaceComparor {
 	       {
 	    	   e.printStackTrace();
 	           System.out.println("Failed to load source image " );
-	           return(confidenceMsg);
+	           return(confidenceMsg = "Failed to load source image");
 	       }
 	       try (InputStream inputStream = isImg2) {
 	           targetImageBytes = ByteBuffer.wrap(IOUtils.toByteArray(inputStream));
