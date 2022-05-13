@@ -1,4 +1,5 @@
 package com.fm.controllers;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,29 +30,27 @@ import com.fm.model.MsgStack;
 import com.fm.utils.AwsFaceComparor;
 import com.fm.utils.ImgUrlConverter;
 
-
-
-
-		
-@CrossOrigin(origins = {"*"}, allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = { "*" }, allowedHeaders = "*", allowCredentials = "true")
 @RestController
 @RequestMapping("/awsImg")
 public class ImgCompareController {
-	
 
-	
 	@PostMapping("/doit")
 	public MsgStack compareImages(@RequestBody ImgCompObj imgUrls) {
 		String imgAtoB = null;
 		String imgAtoC = null;
-		MsgStack msgStack= new MsgStack();
+		MsgStack msgStack = new MsgStack();
 		ArrayList<InputStream> al = new ArrayList<>();
 		try {
-			msgStack.setImgAtoB(AwsFaceComparor.compareImgInputStreams(ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1()), ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg2())));
-			msgStack.setImgAtoC(AwsFaceComparor.compareImgInputStreams(ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1()), ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg3())));
+			msgStack.setImgAtoB(
+					AwsFaceComparor.compareImgInputStreams(ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1()),
+							ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg2())));
+			msgStack.setImgAtoC(
+					AwsFaceComparor.compareImgInputStreams(ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1()),
+							ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg3())));
 
-			
-			//			InputStream isImg1 = ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1());
+			// InputStream isImg1 =
+			// ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg1());
 //			InputStream isImg2 =  ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg2());
 //			InputStream isImg3 =  ImgUrlConverter.getInputStreamOfImage(imgUrls.getImg3());
 //			al.add(isImg1);
@@ -72,34 +71,29 @@ public class ImgCompareController {
 			return msgStack;
 
 		}
-			
-			catch	(MalformedURLException e) {
-				e.printStackTrace();
-				msgStack.setSuccess(false);
-				System.out.println(msgStack.toString());
-				return msgStack;
-			}
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				msgStack.setSuccess(false);
-				return msgStack;
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				msgStack.setSuccess(false);
-				return msgStack;
-			}	
-		
+
+		catch (MalformedURLException e) {
+			e.printStackTrace();
+			msgStack.setSuccess(false);
+			System.out.println(msgStack.toString());
+			return msgStack;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			msgStack.setSuccess(false);
+			return msgStack;
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgStack.setSuccess(false);
+			return msgStack;
+		}
 
 	}
-	
+
 	@GetMapping("/**")
 	public String handleGet() throws Exception {
 		return ("Carole Baskin");
 
-    }
-	
+	}
 
-	
 }
